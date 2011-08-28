@@ -1,0 +1,53 @@
+<div id="infopanel" class="column">
+	<div class="cell">
+		<a class="infobtn" onclick="javascript:switchclass('viewbodyid', 'viewbody', 'viewbodywoinfo');"><span></span></a>
+	</div>
+	<div class="clearer"></div>
+	<div id="infotext">
+		<p><h2>{{film.title}}
+			<fb:like layout="button_count" class="likebtn" width="100px"></fb:like>
+		</h2></p>
+		<p>
+		{%- if film.year -%}
+			<em class="h3">Год: </em>
+			<a href="/slides/year/{{film.year}}" class="smallertext">{{film.year}}</a>
+			<br/>
+		{%- endif -%}
+			<em class="h3">Студия: </em> 
+			<a href="/studios/{{film.studio.url}}" class="smallertext">«{{film.studio.name}}»</a>
+		</p>
+
+		{%- if film.works -%}
+			{%- for grouper, list in film.works|groupby('title') -%}
+			<h3>{{grouper|capitalize}}</h3>
+			<p>
+			{% set pipe = joiner("<br>") %}
+			{% for work in list %}
+				{{ pipe()|safe }}
+				<a class="smallertext" href="/authors/{{work.author.url}}">
+					{{work.author.name}}</a>
+			{%- endfor -%}
+			</p>
+			{%- endfor -%}
+		{%- endif -%}
+		
+		{%- if film.chars -%}
+			<h3>Персонажи</h3>
+			<p>
+			{% set pipe = joiner("<br>") %}
+			{% for char in film.chars %}
+				{{ pipe()|safe }}
+				<a class="smallertext" href="/characters/{{char.url}}">
+					{{char.name}}</a>
+			{%- endfor -%}
+			</p>
+			{%- endif -%}
+		
+		{%- if film.files -%}
+		 <a href="http://dl.dropbox.com/u/1463784/Kashalotik/zip/{{'%04d'|format(film.id)}}_{{film.url}}.zip" 
+		 class="smallertext">Скачать диафильм</a><br>
+		{%- endif -%}
+		<!--a href="#" class="smallertext">Код для вставки на сайт</a-->
+	</div>
+	<div class="clearer"></div>
+</div> <!--/infopanel -->

@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% block list %}
+{%- if results -%}
+<div class="annotext lm">Результаты поиска по запросу <em>«{{query}}»</em> ({{stime}} ms):</div>
+<span>&nbsp;</span>
+<ul class="hidden">
+	{%- for group in results|groupby('section') -%}
+	<li>
+		<h2>{{ group.grouper|capitalize }}</h2>
+		<div class="underline"></div>
+		<ul class="othersearchresults text">
+		{%- for res in group.list -%}
+			<li>
+				<div onclick="javascript:window.open('{{res.url}}', '_self');">
+					<a href="{{res.url}}" class="hidden">{{res.title}}</a>
+					<a href="{{res.srcurl}}" class="hidden"><span class="marker indenttext">{{res.src}}</span></a>
+				</div>
+			</li>	
+		{%- endfor -%}
+		</ul>
+		<div class="clearer">&nbsp;&nbsp;</div>
+	{%- endfor -%}
+</ul>
+{%- else -%}
+	<div class="annotext lm">
+	{%- if query -%}
+	Ничего не найдено по запросу <em>«{{query}}»</em>.
+	{% else %}
+	Введите, пожалуйста, запрос для поиска в поле в правой верхней части страницы.
+	{%- endif -%}
+	</div>
+{%- endif -%}
+{% endblock list%}

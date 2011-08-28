@@ -1,0 +1,21 @@
+<div id="header">
+	<div id="logo" class="column"><!--span id="Kasha">Кашалотик</span--></div>
+	<div id="search" class="column">
+		<div>
+			<input type="search" class="searchbox" placeholder="Текст для поиска"
+			id="searchfld" value="{{query}}"
+			onkeyup="javascript:setlink('searchfld', 'searchbtn','/search/');"/>
+			<a class="searchbtn funcbtn" id="searchbtn">
+			<span></span></a>
+		</div>
+		<!--div class="searchoption"><input type="checkbox"/><span class="lighttext">
+			Искать в других коллекциях</span>
+		</div-->
+	</div> <!--search-->
+</div>
+
+{%- if 'search' in path -%}
+<script>
+	window.document.onload = setFocus('searchfld');
+</script>
+{%- endif -%}

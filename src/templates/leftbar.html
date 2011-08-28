@@ -1,0 +1,33 @@
+{% macro props(href, text) -%}
+	{% set class = "menuentry" %}
+	{% if href in path %}
+		{% set class = "selected" %}
+	{% endif %}
+	<a class="{{class}}" href="{{href}}">{{text}}</a>
+{%- endmacro %}
+<div id="filters" class="column">
+	<h1>По предмету</h1>
+	<ul class="menublock">
+	<li>{{ props("/slides/", "Диафильмы") }}</li>
+	<li>{{ props("/authors/", "Авторы") }}</li>
+	<li>{{ props("/studios/", "Студии") }}</li>
+	<li>{{ props("/characters/", "Персонажи") }}</li>
+	</ul>
+	
+	{%- if labels -%}
+	<h1>По жанрам</h1>
+	<ul class="menublock">
+		{%- for label in labels -%}
+			<li>{{ props("/slides/label/" + label.url, label.name|capitalize) }}</li>
+		{%- endfor -%}
+	</ul>
+	{%- endif -%}
+	
+	<h1>По-всякому</h1>
+	<ul class="menublock">
+	<li>{{ props("/slides/view/random", "Случайные") }}</li>
+	<li>{{ props("/slides/view/recent", "Самые новые") }}</li>
+	<!--li><a class="menuentry">Популярные</a></li>
+	<li><a class="menuentry">Любимые</a></li-->
+	</ul>
+</div>

@@ -1,0 +1,31 @@
+<div class="infoblock">
+		<a href="#" class="cell">
+			<img src="{%-if entity.logo or entity.url -%} {%-if datapath-%}{{datapath}}{%-endif-%}{{entity.logo or '%s.jpg'|format(entity.url)}}{%- else -%}/img/blank.jpg{%-endif-%}"
+			class="thmb"/>
+		</a>
+		<div class="info cell">
+			<h1>{{entity.name}}
+					<fb:like layout="button_count" class="likebtn" width="100px"></fb:like>
+			</h1>
+			<p class="previewtext">
+				{{entity.info|safe}} 
+			</p>
+			{%- if entity.works -%}
+			<p class="previewtext">
+				Роли:  
+				{%- set pipe = joiner(", ") -%}
+				{%- for group in entity.works|groupby('title') -%}
+					{{ pipe() }}
+					{{ group.grouper }}
+				{%- endfor -%}
+				.
+			</p>
+			{%- endif -%}
+		</div>
+</div> <!--infoblock-->
+<div class="commlnk">
+	<!--a href="#comments" class="smallertext text"
+	 onclick="javascript:switchclass('comments', 'shown-comments', null);">
+	 ↓ Комментарии
+	 </a-->
+</div>

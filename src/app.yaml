@@ -1,0 +1,34 @@
+application: kashalotik-2
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /data
+  static_dir: data
+
+- url: /css
+  static_dir: static
+
+- url: /img
+  static_dir: img
+
+- url: /js
+  static_dir: js
+
+- url: /svcore
+  static_dir: svcore
+  
+- url: /favicon.ico
+  static_files: img/favicon.ico
+  upload: img/favicon.ico
+
+- url: /
+  script: main.py
+  
+- url: /(.*)
+  script: main.py

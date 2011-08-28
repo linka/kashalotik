@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% block list %}
+<div class="vmenucontainer {{viewmode}}view">
+	<div id="contentbody" class="column">
+		<div id="filmslist" class="column">
+		{%- if entities -%}
+		<ul class="hidden">
+		{%- for group in entities|groupby('singlework') -%}
+			{%- set COLS = 3 -%}
+			{%- set colitems = ((group.list|count) / COLS)| round(method='ceil') | int -%} 
+			{%- set prevnr = 0 -%}
+			<li>
+				{%- for x in submenu.anchors -%}
+					{%- if x.text == group.grouper -%}
+						<h2><a id="{{x.href}}" class="hidden">{{ group.grouper|capitalize }}</a></h2>
+					{%- endif -%}
+				{%- endfor -%}
+				<div class="linedivider"></div>
+				<div>
+				{%- for entity in group.list -%}
+					{%- set curnr = (loop.index / colitems) | round(method='ceil') | int -%}
+					{%- if curnr > prevnr -%}
+					  {%- if prevnr != 0 -%}</ul>{%- endif -%}<ul class="hidden left column">
+						{%- set prevnr = curnr -%}
+					{%- endif-%}
+					<li>
+							<a href="/{{scriptroot}}/{{entity.url}}" class="hidden cell"
+							title="{{entity.info}}">
+								<h2>{{entity.sndname}} {{entity.fstname}} 
+								<span class="lighttext">({{entity.workscount}})</span></h2>
+							</a>
+					</li>	
+					{%- endfor -%}
+					</ul>
+				</div>
+			</li>
+			<div class="clearer">&nbsp;&nbsp;</div>
+		{%- endfor -%}
+		</ul>
+		{%- endif -%}
+		</div>
+	</div>
+	<!--div class="opt">
+		<p>{{entity.worktitles|join(', ') }}</p>
+		<a href="/{{scriptroot}}/{{entity.url}}" class="thidden">
+			<p class="previewtext">
+			{{entity.info|safe}}</p>
+		</a>
+	</div-->
+	{# include 'vcontentmenu.html' #}
+</div>
+{% endblock %}

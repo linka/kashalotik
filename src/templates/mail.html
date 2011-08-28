@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block about %}
+<div class="about">
+	<h1>Письмо</h1>
+	
+{% if error or success%}
+<div class="text">
+	<span class="{%if error%}err {%endif%}smallertext">{{error|safe or success|safe}}</span>
+</div>
+{% endif %}
+	<form method="POST" action="/mail/">
+		<span class="table">
+			<div class="row">
+				<span class="cell smallertext">Электронная почта: </span>&nbsp;&nbsp;
+				<input name="sender" type="text" class="box cell smallertext" placeholder="Ваш почтовый адрес" value="{{sender}}"/>
+			</div><div class="row">
+				<span class="cell smallertext">Тема письма: </span>&nbsp;&nbsp;
+				<input name="subject" type="text" class="box cell smallertext" placeholder="Кашалотику" value="{{subject}}"/>
+			</div>
+		</span>
+		<p>
+			<div class="cell">
+				<textarea name="body" class="box intext smallertext cell" placeholder="Текст письма">{{body}}</textarea>
+			</div>
+		</p>
+		<input type="submit" value="Отправить" class="smallertext submit text"/>
+	</form>
+</div>
+{% endblock %}
+

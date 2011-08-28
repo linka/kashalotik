@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<meta http-equiv="content-type" content="text/html">
+	<title>{{title}}</title>
+</head>
+
+<body id="sv">
+	<!--START SIMPLEVIEWER EMBED -->
+	<script type="text/javascript" src="{{baseurl}}/svcore/js/simpleviewer.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function () {
+		var flashvars = {};
+		{%- if baseurl -%}
+		flashvars.baseURL = "{{baseurl}}";
+		{% endif %}
+		flashvars.galleryURL = "/data/slides/{{id}}/gallery.xml";
+		var params = {};
+		params.wmode = "transparent";
+		var attributes = {};
+		attributes.id = "svInstance";
+		SV.simpleviewer.load('sv-container', '100%', '100%', '000000', true, flashvars, params, attributes);
+	});
+	</script>
+	<div id="sv-container"></div>
+	<!--END SIMPLEVIEWER EMBED -->
+</body>
+</html>

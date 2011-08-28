@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block header %}
+
+<ul>
+{% for author in authors %}
+<li><a href="/people/{{author.url}}">{{author.name}}</a>{% if author.info%} &mdash; {{author.info}}{% endif %}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

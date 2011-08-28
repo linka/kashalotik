@@ -1,0 +1,124 @@
+{% extends "main.html" %}
+{% block infoblock %}
+	{% if infoblock %}
+		{% include 'infoblock.html' %}
+	{% endif %}
+{% endblock %}
+
+{% block list %}
+<div id="container" class="vmenucontainer {{viewmode}}view">
+	{%- if listtitle -%}
+	<div class="annotext lt cell">
+			{{ listtitle|safe }}
+	</div>
+	{%- endif -%}
+	{%- if environs -%}
+	<div class="lm cell">
+		<nobr>
+		{%- if not environs[0] is none -%}
+			<a href="{{environsurlbase}}{{environs[0]}}">←&nbsp;{{environs[0]}}</a>
+			&nbsp;&nbsp;
+		{%- endif -%}
+		{%- if not environs[1] is none -%}
+			<a href="{{environsurlbase}}{{environs[1]}}">{{environs[1]}}&nbsp;→</a>
+			&nbsp;&nbsp;
+		{%- endif -%}
+		</nobr>
+	</div>
+	{%- endif -%}
+	
+	<div id="contentbody" class="column">
+		<div id="filmslist" class="column">
+		{%- if films -%}
+		{%- for film in films -%}
+		<div class="itemctnr">
+			<div class="filmitem">
+				<a href="/slides/view/{{film.url}}" class="cell thmba">
+						<div class="viewsplash"></div>
+						<img src="/data/slides/{{'%04d'|format(film.id)}}/thumb.jpg"
+						 class="thmb cell"/>
+				</a>
+				<div class="filminfo cell">
+					<a href="/slides/view/{{film.url}}" class="hidden cell">
+						<h1 id="title">{{film.title}}</h1>
+						<span class="none" id="year">{{film.year}}</span>
+					</a>
+					<div class="opt">
+						<a href="/slides/view/{{film.url}}" class="thidden">
+							<p class="previewtext">«{{film.info|safe}}»</p>
+						</a>
+						<p class="previewtext">
+							{%- if film.authors -%}
+								{%- if film.authors|length > 1 -%}
+									Текст:
+								{%- else -%}
+									Текст:
+								{%- endif -%}
+								{% set pipe = joiner(", ") %}
+								{% for author in film.authors %}
+									{{ pipe() }}
+									<a href="/authors/{{author.url}}">{{author.name}}</a>
+								{%- endfor -%}
+							<br>
+							{%- endif -%}
+							
+							{%- if film.artists -%}
+								{%- if film.artists|length > 1 -%}
+								Рисунки:
+								{%- else -%}
+								Рисунки:
+								{%- endif -%} 
+								{% set pipe = joiner(", ") %}
+								{%- for artist in film.artists -%}
+									{{ pipe() }}
+									<a href="/authors/{{artist.url}}">
+									{{artist.name}}</a>
+								{%- endfor -%}
+							{%- endif -%}
+						</p>
+						<p class="previewtext">
+							Студия:
+							<a href="/studios/{{film.studio.url}}">{{film.studio.name}}</a>
+						</p>
+					</div>
+					<div class="tags cell">
+						<div class="opt">
+						{%- if film.labels -%}
+						{%- for label in film.labels -%}
+						<a href="/slides/label/{{label.url}}" class="tag cell"> 
+							<span class="tagbody">
+								<span class="indenttext">
+									{{label.name}}	
+								</span>
+							</span>
+						</a>
+						{%- endfor -%}
+						{%- endif -%}
+						</div>
+						{% if film.year %}
+						<a href="/slides/year/{{film.year}}" class="tag"> 
+							<span class="tagbody">
+								<span class="indenttext">										
+									{{film.year}}	
+								</span>
+							</span>
+						</a>
+						{%- endif -%}
+					</div> <!--tags-->
+				</div> <!--filminfo-->
+			</div> <!--filmitem-->
+			<div class="linedivider"></div>
+		</div>
+		{%- endfor -%}
+		{%- endif -%}
+		</div>
+	</div>
+	{% include 'vcontentmenu.html' %}
+</div>
+{% endblock %}
+
+{% block comments %}
+	{%- if comments -%}
+	{% include 'comments.html' %}
+	{%- endif -%}
+{% endblock %}

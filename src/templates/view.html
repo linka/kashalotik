@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block header %}
+
+<ul>
+<li>{{film.title}}</li>
+<li>{{film.info}}</li>
+<li><a href="/slides/year/{{film.year}}">{{film.year}}</a></li>
+<li><a href="/studios/{{film.studio.url}}">{{film.studio.name}}</a></li>
+{% if film.works %}<li>{% for work in film.works %} <a href="/people/{{work.author.url}}">{{work.author.name}}</a> ({{work.title}}) {% endfor %}</li>{% endif %}
+{% if film.media %}<li>{% for file in film.media %} <a href="{{file.url}}">Скачать ({{file.type}}) {% endfor %}</a> </li>{% endif %}
+</ul>
+
+{% endblock %}

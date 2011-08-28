@@ -1,0 +1,59 @@
+/diafilms = /slides - list
+
+/slides?mode=list - as list
+/slides?mode=grid - as grid, by default
+/slides/xml/{name} - xml
+/slides/rss - feed
+
+/slides/label/{label} - by label
+    education
+    story
+    tale
+    sports
+    latest - relatively new
+    popular - using everybody fb likes
+    favorite - using user's fb likes
+
+/slides/year/{year} - by year
+    year/  - year cloud
+    year/x - unknown year
+
+/slides/label/{label}/?view=grid&sort=yearup - all lists can have options
+
+/slides/view/kot-v-sapogah-1978 - detailed view
+/slides/download - links to download everything at once
+/slides/download/kot-v-sapogah-1978 - download link
+/slides/read - list of scripts
+/slides/read/kot-v-sapogah-1978 - script display
+/slides/listen/kot-v-sapogah-1978 - mp3's
+
+/contact - send mail
+
+/authors - list
+/authors/view/e-uspenskiy - by short urlified name
+/authors/empty - list for people w/o bio (hidden)
+/authors/{position}
+    author - Автор
+    scenario - Сценарий
+    translation-and-adaptation - Перевод и обработка
+    artist - Художник
+    editor - Редактор
+    art-director - Художественный редактор
+    director - Руководитель
+    puppeteer - Кукловод
+    graphic-designer - Художник-оформитель
+    production-designer - Художник-постановщик
+    camera - Оператор
+    former - Составитель
+    actor - Актер
+    character - Персонаж
+
+/studios - list
+/studios/ukrkinochronika - by urlified name
+
+/characters - list
+/characters/medved - by name
+
+/search?q=example - search
+/search?q=example&type=web - search outside
+

@@ -1,0 +1,33 @@
+<div id="vcontentmenu" class="column">
+		<div class="funcbtnvblock">
+			{%- if not nogrid -%}
+			<a class="gridnormbtn funcbtn"
+			 onclick="javascript:switchclass('container', 'vmenucontainer gridview');setCookie('mode', 'grid', null);">
+				<span></span>
+			</a>
+			{%- endif -%}
+			{%- if not nolist -%}
+			<a class="listnormbtn funcbtn topmargin"
+			 	onclick="javascript:switchclass('container', 'vmenucontainer listview');setCookie('mode', 'list', null);">
+				<span></span>
+			</a>
+			<div class="space">&nbsp;</div>
+			{%- endif -%}
+		</div>
+		
+		<div>
+			<a class="selected" id="alphasort" 
+			onclick="javascript: dosort('alphasort', 'menuentry', 'selected', 'filmslist', 'DIV', 'title');">
+			<span class="">
+				<span name="direction" class="down"><span id="down">↓</span><span id="up">↑</span></span>&nbsp;<span class="">А</span></span></a>
+			{%- if sortbyyear -%}
+			<a class="menuentry" id="yearsort" 
+			onclick="javascript: dosort('yearsort', 'menuentry', 'selected', 'filmslist', 'DIV', 'year');">
+			<span class="">
+				<span name="direction" class="up"><span id="down">↓</span><span id="up">↑</span></span><span class="extrasmall">1984</span>
+			</span>
+			</a>
+			{%- endif -%}
+		</div>					
+</div> <!--vcontentmenu-->
+

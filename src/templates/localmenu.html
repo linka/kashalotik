@@ -1,0 +1,29 @@
+{%- if backbtn -%}
+<div class="lm cell">
+	<a href="{{backurl}}">←&nbsp;Назад</a>&nbsp;
+</div>
+{%- endif -%}
+{%- if nextrandom -%}
+<div class="lm cell">
+	<a href="/slides/view/{{nextrandom.url}}">Случайный&nbsp;→</a>&nbsp;&nbsp;
+</div>
+{%- endif -%}
+{%- if submenu -%}
+<div class="lm">
+	<div class="lighttext text">{{submenu.title}}</div>
+	{% set COLS = 4 %}
+	{% set colitems = ((submenu.anchors|count) / COLS)| round(method='ceil') | int %} 
+	{% set prevnr = 0 %}
+
+	{%- for k in submenu.anchors -%}
+		{% set curnr = (loop.index / colitems) | round(method='ceil') | int %}
+		{% if curnr > prevnr %}
+			{% if prevnr != 0 %}</ul>{% endif %}<ul class="hidden left column2">
+			{% set prevnr = curnr %}
+		{% endif%}
+		<li><a href="#{{k.href}}">{{k.text|capitalize}}</a>&nbsp;</li>
+	{%- endfor -%}
+	</ul>
+	<div class="clearer">&nbsp;&nbsp;</div>
+</div>
+{%- endif -%}

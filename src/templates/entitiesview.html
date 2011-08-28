@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% block list %}
+<div id="container" class="vmenucontainer {{viewmode}}view">
+	<div id="contentbody" class="column">
+		<div id="filmslist" class="column">
+		{% if entities %}
+		{% for entity in entities %}
+		<div class="itemctnr">
+			<div class="filmitem">
+				<a href="/{{scriptroot}}/{{entity.url}}" class="cell">
+						<img src="{%-if entity.logo or entity.url -%} {%-if datapath-%}{{datapath}}{%-endif-%}{{entity.logo or '%s.jpg'|format(entity.url)}}{%- else -%}/img/blank.jpg{%-endif-%}"
+						 class="thmb cell"/>
+				</a>
+				<div class="filminfo cell">
+					<a href="/{{scriptroot}}/{{entity.url}}" class="hidden cell">
+						<h1 id="title">{{entity.name}}</h1>
+					</a>
+					<div class="opt">
+						<a href="/{{scriptroot}}/{{entity.url}}" class="thidden">
+							<p class="previewtext">{{entity.info|safe}}</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="linedivider"></div>
+		</div>
+		{% endfor %}
+		{% endif %}
+		</div>
+	</div>
+	{% include 'vcontentmenu.html' %}
+</div>
+{% endblock %}

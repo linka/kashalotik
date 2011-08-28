@@ -1,0 +1,16 @@
+{% if films %}
+<table border=1 width=90%>
+  {% for film in films %}
+  <tr>
+    <td><a href="/slides/view/{{film.url}}">{{film.title}}</a></td>
+    <td>{{film.info}}</td>
+    <td><a href="/studios/{{film.studio.url}}">{{film.studio.name}}</a></td>
+    <td><a href="/slides/year/{{film.year}}">{{film.year}}</a></td>
+    <td>{% for label in film.labels %} <a href="/slides/label/{{label.url}}">{{label.name}}</a> {% endfor %}</td>
+    <td>{% for author in film.authors %} <a href="/people/{{author.url}}">{{author.name}}</a> {% endfor %}</td>
+    <td>{% for artist in film.artists %} <a href="/people/{{artist.url}}">{{artist.name}}</a> {% endfor %}</td>
+    {% if film.role %}<td>{{film.role}}</td>{% endif %}
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}

@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+{% block list %}
+<div class="vmenucontainer">
+	<div id="contentbody" class="column">
+		<div id="filmslist" class="{{viewmode}}view column">
+		{% if entities %}
+		<ul>
+		{% for group in entities|groupby('worktitles') %}
+			<li>{{ group.grouper }}
+					<div class="linedivider"></div>
+				<ul>
+					{% for entity in entities %}
+					<li>
+						<div class="filmitem">
+							<!--a href="/{{scriptroot}}/{{entity.url}}" class="cell">
+									<img src="/img/preview1.jpg"
+									 class="thmb cell"/>
+							</a-->
+							<div class="filminfo cell">
+								<a href="/{{scriptroot}}/{{entity.url}}" class="hidden cell">
+									<h1>{{entity.sndname}} {{entity.fstname}}</h1>
+									<div>{{entity.worktitles|join(', ') }}</div>
+								</a>
+								<div class="opt">
+									<a href="/{{scriptroot}}/{{entity.url}}" class="thidden">
+										<p class="previewtext">
+										{{entity.info|safe}}</p>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>	
+					{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+		</ul>
+		{% endif %}
+		</div>
+	</div>
+	{% include 'vcontentmenu.html' %}
+</div>
+{% endblock %}

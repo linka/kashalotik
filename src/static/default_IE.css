@@ -1,0 +1,118 @@
+/*
+Template name: IE Kashalotik template
+*/
+
+/*
+1.5em 24px
+1em 16px
+.875em 14px
+.75em 12px
+*/
+
+/*IE hack*/
+a.hidden span{
+	text-decoration: none;	
+}
+
+a.hidden span:hover{
+	text-decoration: underline;
+	cursor: pointer;	
+}
+/* general */
+.black #sv {
+	background-color: transparent;
+}
+
+/*texts*/
+.indenttext {
+	/* IE hack */
+	display: block;
+	filter: dropshadow(color=#b0b0b0,offX=-1,offY=-1);
+}
+
+.indenttext:hover {
+	/* IE hack */
+	display: block;
+	filter: dropshadow(color=#a0a0a0,offX=1,offY=0);
+}
+
+/*side spaces*/
+.searchbox {
+	width: 198px;
+}
+
+/* content */
+.gridview .filminfo {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	background-color: #000000;
+	color: #ffffff;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; /* IE 8*/
+	filter: alpha(opacity = 75); /* IE 7 */
+}
+
+a:hover .viewsplash {
+	background-color: #000000;
+	background-image: url('../img/viewsplash.png');
+	position: absolute;
+	top: 0;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; /* IE 8*/
+	filter: alpha(opacity = 75); /* IE 7 */
+}
+
+.gridview .tag:hover {
+	font-size: 1em;
+	filter: dropshadow(enabled=false);
+	text-decoration: underline;
+}
+
+.gridview .tag, .gridview .tag:active, .gridview .tag:visited   
+{
+	font-size: 1em;
+	filter: dropshadow(enabled=false);
+}
+
+.gridview .tag .indenttext {
+	filter: dropshadow(enabled=false);
+}
+
+.gridview .tagbody {
+	background: none;
+	padding-top: .4em; /* dirty hack */
+	font-size: .875em; 
+}
+
+/* content presentation */
+.sortupbtn {
+	background-image: url(../img/sort_norm_up.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	vertical-align: middle;
+	cursor: pointer;
+	padding-top: 0;
+	padding-left: 16px;
+}
+
+.sortdownbtn {
+	background-image: url(../img/sort_norm_down.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	vertical-align: middle;
+	cursor: pointer;
+	padding-left: 16px;	
+}
+
+/* tags */
+.tags {
+	float: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-bottom: 1px;
+}
+
+/*** IE6 Fix ***/
+* html #filters {
+   /* RC width */
+}

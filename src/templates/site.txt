@@ -1,0 +1,1 @@
+<div align='center' width='600'><h3><a target=_blank href='http://kashalotik.info'>Кашалотик</a>: <a target=_blank href='http://kashalotik.info/diafilms/67'>Акула</a></h3><embed src='http://kashalotik.info/viewer.swf' width='550' height='410' bgcolor='#ffffff' flashvars='xmlDataPath=http://kashalotik.info/data/0067/gallery.xml'></embed></div>

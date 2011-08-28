@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slides>
+  {% for slide in slides %}<slide>
+    <id>{{slide.id}}</id>
+    <title>{{slide.title}}</title>{% if slide.info %}
+    <info>{{slide.info}}</info>{% endif %}{% if slide.year %}
+    <year>{{slide.year}}</year>{% endif %}{% if slide.studio %}
+    <studio>{{slide.studio}}</studio>{% endif %}{% if slide.authors %}
+    <authors>{% for author in slide.authors %}
+      <author>
+        <name>{{author.name}}</name>
+        <title>{{author.title}}</title>
+      </author>{% endfor %}
+    </authors>{% endif %}{% if slide.labels %}
+    <labels>{% for label in slide.labels %}
+      <label>{{label}}</label>{% endfor %}
+    </labels>{% endif %}
+    <language>{{slide.language}}</language>
+    <files>{% for file in slide.files %}
+      <file>
+        <name>{{file.name}}</name>
+        <type>{{file.type}}</type>
+      </file>{% endfor %}
+    </files>
+  </slide>{% endfor %}
+</slides>

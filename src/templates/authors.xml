@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<authors>
+  {% for bio in authors %}<bio>
+    <name>{{bio.name}}</name>{% if bio.info %}
+    <info>{{bio.info}}</info>{% endif %}{% if bio.links %}
+    <urls>{% for url in bio.links %}
+      <url>
+        <name>{{url.name}}</name>
+        <link>{{url.link}}</link>
+      </url>{% endfor %}
+    </urls>{% endif %}{% if bio.pic %}
+    <pic>{{bio.pic}}</pic>{% endif %}{% if bio.pic_origin %}
+    <picorigin>{{bio.pic_origin}}</picorigin>{% endif %}
+  </bio>{% endfor %}
+</authors>

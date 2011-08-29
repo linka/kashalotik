@@ -330,7 +330,7 @@ def render_xml(name):
     return render_template('%s.xml' % name, **values)
         
 
-@app.route('/about')
+@app.route('/about/')
 def about():
     tdict = {'about': True}
     return render('about.html', **tdict)
